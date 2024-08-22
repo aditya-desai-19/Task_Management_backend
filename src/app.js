@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import userRouter from './routes/user.routes.js';
 import taskRouter from './routes/task.routes.js';
+import { verifyToken } from './middlewares/verifyToken.middleware.js';
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.get('/', (req, res) => {
 })
 
 app.use("/api/user", userRouter);
+app.use(verifyToken());
 app.use("/api/task", taskRouter);
 
 export { app }

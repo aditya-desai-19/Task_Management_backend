@@ -4,7 +4,7 @@ import { User } from '../models/user.models.js';
 import { OAuth2Client } from 'google-auth-library';
 import jwt from 'jsonwebtoken';
 
-const SECRET_KEY = "TaskMangement";
+export const SECRET_KEY = "TaskMangement";
 const SALT_ROUNDS = 10;
 
 const registerUser = async (req, res) => {

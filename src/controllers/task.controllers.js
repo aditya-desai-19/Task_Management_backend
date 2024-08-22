@@ -2,9 +2,9 @@ import { Task } from "../models/task.models.js";
 
 const addTask = async (req, res) => {
     try {
-        const { name, description, status, userId } = req.body;
+        const { name, description, status } = req.body;
 
-        if(!name || !status || !userId) {
+        if(!name || !status || !req.user) {
             return res.status(400).json({ msg: "Bad request" });
         }
 
@@ -12,10 +12,12 @@ const addTask = async (req, res) => {
             name: name,
             description: description,
             status: status,
-            userId: userId
+            user: req.user.user.id
         })
 
         await task.save();
+
+        return res.status(201).json({ msg: "Successfully added task", task });
     } catch (error) {
         return res.status(500).json({ msg: "Some error occurred" });
     }
@@ -23,7 +25,7 @@ const addTask = async (req, res) => {
 
 const getTasks = async (req, res) => {
     try {
-        const tasks = await Task.find({user: req.user.id});
+        const tasks = await Task.find({user: req.user.user.id});
         return res.status(200).json({ tasks });
     } catch (error) {
         return res.status(500).json({ msg: "Some error occurred" });

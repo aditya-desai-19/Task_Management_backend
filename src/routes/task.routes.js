@@ -1,5 +1,6 @@
 import express from 'express';
 import { addTask, getTasks, getTaskById, updateTaskById, deleteTaskById } from '../controllers/task.controllers.js';
+import { verifyToken } from '../middlewares/verifyToken.middleware.js';
 
 const taskRouter = express.Router();
 
