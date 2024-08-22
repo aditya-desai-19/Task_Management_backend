@@ -1,4 +1,4 @@
-import { Task } from "../models/task.model";
+import { Task } from "../models/task.models.js";
 
 const addTask = async (req, res) => {
     try {

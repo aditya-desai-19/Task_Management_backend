@@ -1,8 +1,9 @@
 import express from 'express';
-import { authenticateUser, registerUser } from '../controllers/user.controllers';
+import { authenticateUser, registerUser, authenticateGoogleUser } from '../controllers/user.controllers.js';
 const userRouter = express.Router();
 
-userRouter.get('/', authenticateUser);
-userRouter.post('/', registerUser);
+userRouter.post('/login', authenticateUser);
+userRouter.post('/signup', registerUser);
+userRouter.post('/google-auth', authenticateGoogleUser);
 
 export default userRouter;
