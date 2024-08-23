@@ -49,6 +49,16 @@ This repository contains the backend for the Task Management application, built 
     
     SECRET_KEY
 
+## Screenshots
+
+![tm-1](https://github.com/user-attachments/assets/94e44044-fd09-44d9-bfd9-6937c61a5e36)
+
+![tm-2](https://github.com/user-attachments/assets/6fa44f2b-928e-4f22-92d7-4446f9859dba)
+
+![tm-3](https://github.com/user-attachments/assets/9fb538c3-78b2-4911-a778-a80b724676f7)
+
+![tm-4](https://github.com/user-attachments/assets/d4d2b5ed-a263-4f63-9757-56f14e5bf7bf)
+
 ## Author
 
 - [@aditya-desai-19](https://github.com/aditya-desai-19)
