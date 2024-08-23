@@ -25,7 +25,7 @@ const addTask = async (req, res) => {
 
 const getTasks = async (req, res) => {
     try {
-        const tasks = await Task.find({user: req.user.user.id});
+        const tasks = await Task.find({user: req.user.user.id, deleted: false});
         return res.status(200).json({ tasks });
     } catch (error) {
         return res.status(500).json({ msg: "Some error occurred" });
@@ -60,7 +60,7 @@ const updateTaskById = async (req, res) => {
             return res.status(400).json({ msg: "Bad request" });
         }
 
-        if(!name || !description || !status) {
+        if(!name || !status) {
             return res.status(400).json({ msg: "Bad request" });
         }
 
