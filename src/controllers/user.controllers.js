@@ -56,6 +56,7 @@ const authenticateUser = async (req, res) => {
         if (user && user.password) {
             const isMatch = await bcrypt.compare(req.body.password, user.password);
             if (isMatch) {
+                console.log("is match")
                 const expiration = Math.floor(Date.now() / 1000) + (60 * 60 * 24);
                 const userDetails = { name: `${user.firstName} ${user.lastName}`, id: user._id };
                 const token = jwt.sign({ user: userDetails, exp: expiration }, SECRET_KEY);
@@ -80,7 +81,6 @@ const authenticateGoogleUser = async (req, res) => {
             audience: process.env.GOOGLE_CLIENT_ID,
         });
         const payload = ticket.getPayload();
-
         let user = await User.findOne({ email: payload.email });
         if (!user) {
             user = new User({
@@ -94,7 +94,6 @@ const authenticateGoogleUser = async (req, res) => {
         } else if (user.googleId !== payload?.sub) { // check for normal user when using google login
             return res.status(500).json({ msg: "Some error occurred" });
         }
-
         const expiration = Math.floor(Date.now() / 1000) + (60 * 60 * 24);
         const userDetails = { name: `${user.firstName} ${user.lastName}`, id: user._id };
         const token = jwt.sign({ user: userDetails, exp: expiration }, SECRET_KEY);
