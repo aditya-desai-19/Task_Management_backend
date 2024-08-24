@@ -2,6 +2,8 @@
 
 This repository contains the backend for the Task Management application, built using Node.js, Express, and MongoDB. The backend provides a RESTful API for managing tasks, users, and authentication processes, implementing secure JWT (JSON Web Token) authentication and following the MVC (Model-View-Controller) architectural pattern.
 
+Live link: https://task-management-backend-dun.vercel.app/
+
 ## Features
 
 - User registration and login with JWT-based authentication.
